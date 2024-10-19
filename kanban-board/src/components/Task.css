@@ -1,0 +1,101 @@
+/* Task.css */
+
+.task-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #007bff;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.task-options {
+  color: #999;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.task-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.task-due {
+  background-color: #e7f3ff;
+  color: #007bff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.task-assignee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffe8d6;
+  color: #d9730d;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.task-tag {
+  background-color: #e6ffed;
+  color: #28a745;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.task-options {
+  cursor: pointer;
+  position: relative;
+}
+
+.task-options-dropdown {
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 100;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-options-dropdown button {
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: left;
+}
+
+.task-options-dropdown button:hover {
+  background-color: #f5f5f5;
+}

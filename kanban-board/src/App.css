@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f6fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+h2 {
+  font-family: 'Segoe UI', sans-serif;
+}
+/* Main app container */
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  position: relative; /* To make search box position relative to this container */
+}
+
+/* Main app container */
+.App {
+  position: relative;
+  padding-top: 20px;
+}
+
+/* Top-right container holding search, settings, and download */
+.top-right-container {
+  position: absolute;
+  top: 20px; /* Adjust this value to control vertical position */
+  right: 20px; /* Adjust this value to control horizontal position */
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between search and icons */
+}
+
+/* Search container */
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Search input styling */
+.search-box {
+  border: none;
+  outline: none;
+  padding: 10px;
+  width: 200px;
+  font-size: 16px;
+  border-radius: 25px;
+}
+
+/* Icon container */
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Top-right icons styling (Settings, Download) */
+.top-icon {
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.top-icon:hover {
+  color: #007BFF;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .top-right-container {
+    right: 10px;
+    top: 10px;
+  }
+
+  .search-box {
+    width: 150px;
+  }
+
+  .top-icon {
+    font-size: 20px;
+  }
+}
