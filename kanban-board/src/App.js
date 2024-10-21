@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faCog, faDownload } from '@fortawesome/free-solid-svg-icons'; // Import the icons
 import './App.css';
 
@@ -36,7 +37,11 @@ function App() {
 
         {/* Download Icon */}
         <div className="icon-container">
-          <FontAwesomeIcon icon={faDownload} className="top-icon" title="Download" />
+          <FontAwesomeIcon
+            icon={faDownload}
+            className="top-icon"
+            title="Download"
+          />
         </div>
       </div>
 
