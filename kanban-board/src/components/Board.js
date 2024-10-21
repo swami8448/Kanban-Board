@@ -6,22 +6,26 @@ import './Board.css';
 const Board = () => {
   const [sections, setSections] = useState(['To Do', 'In Progress', 'Done']);
   const [tasksBySection, setTasksBySection] = useState({
-    'To Do': [{ name: 'Task 1' }],
-    'In Progress': [{ name: 'Task 2' }],
-    'Done': [{ name: 'Task 3' }],
+    'To Do': [],
+    'In Progress': [],
+    Done: [],
   });
 
   const handleDeleteTask = (taskToDelete, sectionTitle) => {
-    const updatedTasks = tasksBySection[sectionTitle].filter(task => task.name !== taskToDelete.name);
+    const updatedTasks = tasksBySection[sectionTitle].filter(
+      (task) => task.name !== taskToDelete.name
+    );
     setTasksBySection({
       ...tasksBySection,
-      [sectionTitle]: updatedTasks
+      [sectionTitle]: updatedTasks,
     });
   };
 
   // Function to delete a section
   const handleDeleteSection = (sectionTitle) => {
-    const updatedSections = sections.filter(section => section !== sectionTitle);
+    const updatedSections = sections.filter(
+      (section) => section !== sectionTitle
+    );
     setSections(updatedSections);
 
     const updatedTasks = { ...tasksBySection };
@@ -34,31 +38,58 @@ const Board = () => {
     const sourceSection = task.sourceSection;
 
     // Remove the task from the source section
-    const updatedSourceTasks = tasksBySection[sourceSection].filter(t => t.name !== task.name);
+    const updatedSourceTasks = tasksBySection[sourceSection].filter(
+      (t) => t.name !== task.name
+    );
 
     // Add the task to the destination section
-    const updatedDestinationTasks = [...tasksBySection[destinationSection], task];
+    const updatedDestinationTasks = [
+      ...tasksBySection[destinationSection],
+      task,
+    ];
+    let newDestinationTasks = [];
+    for (let ele of updatedDestinationTasks) {
+      console.log(ele);
+      const stringifiedEle = JSON.stringify(ele);
+      console.log(stringifiedEle);
+
+      try {
+        const parsedEle = JSON.parse(stringifiedEle);
+
+        if (
+          !newDestinationTasks.some(
+            (task) => JSON.stringify(task) === stringifiedEle
+          )
+        ) {
+          newDestinationTasks.push(parsedEle);
+        }
+      } catch (error) {
+        console.error('Error parsing JSON:', error);
+      }
+    }
 
     setTasksBySection({
       ...tasksBySection,
       [sourceSection]: updatedSourceTasks,
-      [destinationSection]: updatedDestinationTasks,
+      [destinationSection]: newDestinationTasks,
     });
   };
 
   return (
     <div className="board">
-      {sections.map((section, index) => (
-        <Section 
-          key={index} 
-          title={section} 
-          tasks={tasksBySection[section]} 
-          onDeleteTask={handleDeleteTask} 
+      {sections?.map((section, index) => (
+        <Section
+          key={index}
+          title={section}
+          tasks={tasksBySection[section]}
+          onDeleteTask={handleDeleteTask}
           onDeleteSection={handleDeleteSection}
           onDrop={handleDrop} // Pass the drop handler
         />
       ))}
-      <AddSectionButton onAddSection={title => setSections([...sections, title])} />
+      <AddSectionButton
+        onAddSection={(title) => setSections([...sections, title])}
+      />
     </div>
   );
 };
